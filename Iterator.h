@@ -3,7 +3,7 @@
  **** Created By : kyaz758
  *** Description :
  * Creation Date : 2016-12-11 16:00
- * Last Modified : 2016-12-15 23:02
+ * Last Modified : 2016-12-16 11:33
  ******************************************************************************/
 
 #include <iostream>
@@ -11,6 +11,8 @@ using std::cin;
 using std::cout;
 using std::endl;
 
+#ifndef ITERATOR_H
+#define ITERATOR_H
 namespace kyaz 
 {
     typedef int ptrdiff_t;
@@ -31,6 +33,18 @@ namespace kyaz
         typedef _Ref    reference;
     };
 
+    // VC P.J
+    template <typename _Cate, typename _Ty, typename _Dist, 
+             typename _P, typename _Ref>
+    _Cate _Iter_cat(const Iterator<_Cate, _Ty, _Dist, _P, _Ref> &)
+    {
+        return _Cate();
+    }
+    template <typename T>
+    random_access_iterator_tag _Iter_cat(const T *)
+    {
+        return random_access_iterator_tag();
+    }
 
     // Traits-----SGI
     template <typename Iterator>
@@ -68,7 +82,48 @@ namespace kyaz
         typedef typename iterator_traits<Iterator>::iterator_category category;
         return category();
     }
+    template <typename Iterator>
+    typename iterator_traits<Iterator>::value_type *
+    value_type(const Iterator &)
+    {
+        return static_cast<typename iterator_traits<Iterator>::value_type *>(0);
+    }
+    template <typename Iterator>
+    typename iterator_traits<Iterator>::difference_type *
+    difference_type(const Iterator &)
+    {
+        return static_cast
+            <typename iterator_traits<Iterator>::difference_type *>(0);
+    }
+    
+    template <typename _Ty, typename _D>
+    struct _Bidit : public Iterator<bidirectional_iterator_tag, _Ty, _D> {};
 
+    template <typename _Ty, typename _D>
+    struct _Ranit : public Iterator<random_access_iterator_tag, _Ty, _D> {};
+
+    template <typename _II>
+    typename iterator_traits<_II>::difference_type
+    __distance(_II _F, _II _L, input_iterator_tag)
+    {
+        typename iterator_traits<_II>::difference_type n = 0;
+        while (_F++ != _L) ++n;
+        return n;
+    }
+
+    template <typename _II>
+    typename iterator_traits<_II>::difference_type
+    __distance(_II _F, _II _L, random_access_iterator_tag)
+    {
+        return _L - _F;
+    }
+
+    template <typename _II>
+    typename iterator_traits<_II>::difference_type
+    distance(_II _F, _II _L)
+    {
+        return __distance(_F, _L, iterator_category(_F));
+    }
 
 
 
@@ -99,7 +154,9 @@ namespace kyaz
     template <typename _II, typename _Dist>
     void advance(_II &i, _Dist n)
     {
+        typedef typename iterator_traits<_II>::iterator_category cate;
         __advance(i, n, cate());
+        //__advance(i, n, _Iter_cat(i));
     }
-
-}
+}; 
+#endif
