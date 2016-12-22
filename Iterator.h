@@ -3,7 +3,7 @@
  **** Created By : kyaz758
  *** Description :
  * Creation Date : 2016-12-11 16:00
- * Last Modified : 2016-12-16 11:33
+ * Last Modified : 2016-12-22 12:41
  ******************************************************************************/
 
 #include <iostream>
@@ -15,6 +15,14 @@ using std::endl;
 #define ITERATOR_H
 namespace kyaz 
 {
+    /*
+     * 迭代器之型别：
+     * input               read-only
+     * output              write-only 
+     * forward             read&write
+     * bidirectional       read&write&++&--
+     * random_access       read&write&++&--&+&-
+     */
     typedef int ptrdiff_t;
     struct input_iterator_tag {};
     struct output_iterator_tag {};
@@ -32,6 +40,14 @@ namespace kyaz
         typedef _P      pointer;
         typedef _Ref    reference;
     };
+    /*
+     * 迭代器萃取型别：
+     * _Cate 迭代器之型别
+     * _Ty   迭代器所指之物之型别
+     * _Dist 迭代器所指之物的差值型别
+     * _P    迭代器所指之物之指针型别
+     * _Ref  迭代器所指之物之引用型别
+     */
 
     // VC P.J
     template <typename _Cate, typename _Ty, typename _Dist, 

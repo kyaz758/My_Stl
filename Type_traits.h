@@ -3,7 +3,7 @@
  **** Created By : kyaz758
  *** Description :
  * Creation Date : 2016-12-16 11:22
- * Last Modified : 2016-12-16 11:33
+ * Last Modified : 2016-12-22 12:13
  ******************************************************************************/
 
 #include <iostream>
@@ -18,6 +18,10 @@ namespace kyaz
     struct __true_type {};
     struct __false_type {};
     
+    /*
+     * 类型萃取模板：define其内各种函数的必要性
+     * 作用：提升调用时的效率，减少不必要的析构赋值操作
+     */
     template <typename type>
     struct __type_traits
     {

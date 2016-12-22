@@ -3,7 +3,7 @@
  **** Created By : kyaz758
  *** Description :
  * Creation Date : 2016-12-18 14:47
- * Last Modified : 2016-12-18 15:11
+ * Last Modified : 2016-12-22 12:10
  ******************************************************************************/
 
 #include <iostream>
@@ -29,7 +29,9 @@ namespace kyaz
     {
         new (p) T();
     }
-    
+    /*
+     * 部分特化：特化指针版本
+     */ 
     template <typename T>
     inline void destory(T *pointer)
     {
@@ -57,7 +59,7 @@ namespace kyaz
         }
     }
     template <typename _FI>
-    inline void __destory_aux(_FI _F, _FI _L, __true_type) {}
+    inline void __destory_aux(_FI , _FI , __true_type) {}
     inline void destory(char *, char *) {}
     inline void destory(wchar_t *, wchar_t *) {}
 };
