@@ -1,9 +1,9 @@
 /******************************************************************************
  ***** File Name : Alloc.h
  **** Created By : kyaz758
- *** Description :
+ *** Description : STL之空间配置器Alloc
  * Creation Date : 2016-12-18 15:12
- * Last Modified : 2016-12-22 15:12
+ * Last Modified : 2016-12-22 15:16
  ******************************************************************************/
 #ifndef ALLOC_H
 #define ALLOC_H 

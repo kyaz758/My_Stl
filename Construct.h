@@ -1,9 +1,9 @@
 /******************************************************************************
  ***** File Name : Construct.h
  **** Created By : kyaz758
- *** Description :
+ *** Description : STL之构造配置工具construct和destory
  * Creation Date : 2016-12-18 14:47
- * Last Modified : 2016-12-22 12:10
+ * Last Modified : 2016-12-22 15:18
  ******************************************************************************/
 
 #include <iostream>

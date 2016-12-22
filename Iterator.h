@@ -1,9 +1,9 @@
 /******************************************************************************
  ***** File Name : Iterator.h
  **** Created By : kyaz758
- *** Description :
+ *** Description : STL之迭代器Iterator
  * Creation Date : 2016-12-11 16:00
- * Last Modified : 2016-12-22 12:41
+ * Last Modified : 2016-12-22 15:16
  ******************************************************************************/
 
 #include <iostream>

@@ -1,9 +1,9 @@
 /******************************************************************************
  ***** File Name : Type_traits.h
  **** Created By : kyaz758
- *** Description :
+ *** Description : STL之类型萃取type_traits
  * Creation Date : 2016-12-16 11:22
- * Last Modified : 2016-12-22 12:13
+ * Last Modified : 2016-12-22 15:17
  ******************************************************************************/
 
 #include <iostream>
